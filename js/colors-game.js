@@ -1,4 +1,4 @@
-const rows = 3, cols = 3;
+const rows = 4, cols = 4;
 const items = document.querySelectorAll('.item');
 const playAgain = document.querySelector('#play');
 const containerModal = document.querySelector('.container-modal');
@@ -8,7 +8,7 @@ const scoreContent = document.querySelector('#score');
 
 
 
-const colors = [ '#ee9b00', '#d90368' , '#e63946', '#4f772d','#78290f','#133c55'];
+const colors = ['#ee9b00', '#d90368', '#e63946', '#4f772d', '#78290f', '#133c55'];
 let score;
 
 primaryGame();
@@ -20,22 +20,17 @@ function primaryGame() {
 
 
 function colorItems() {
-    let randomColor = Math.floor(Math.random() * colors.length); //find random color
+    let randomColor = Math.floor(Math.random() * colors.length);
     let colorMain = colors[randomColor];
-
-
- // Calculate the amount based on the score
- let amount = 60 + Math.floor(score / 5) * -7; // Increase amount by 10 for every 5 points
-
+    let amount = 60 + Math.floor(score / 5) * -7;
 
     items.forEach(item => {
         item.style.backgroundColor = colorMain;
     })
-    let targetItem = Math.floor(Math.random() * (rows * cols - 1)); //find random cell
+    let targetItem = Math.floor(Math.random() * (rows * cols - 1));
     items[targetItem].style.backgroundColor = LightenDarkenColor(colorMain, amount);
 
     items.forEach((item, index) => {
-        // console.log(index);
         if (targetItem === index) {
             item.removeEventListener('click', loseGame);
             item.addEventListener('click', nextLevel);
@@ -46,7 +41,6 @@ function colorItems() {
     })
 }
 
-
 function LightenDarkenColor(color, amount) {
     return '#' + color.replace(/^#/, '').replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
 }
@@ -55,8 +49,15 @@ function loseGame() {
     containerGame.style.visibility = 'hidden';
     modalH3.innerHTML = `your score : ${score}`;
     containerModal.classList.add('display');
-
     const audio = new Audio('audio/lose.mp3');
+    audio.play();
+}
+
+function nextLevel() {
+    score++;
+    scoreContent.innerHTML = `Score : ${score}`;
+    colorItems();
+    const audio = new Audio('audio/press.mp3');
     audio.play();
 }
 
@@ -67,14 +68,4 @@ playAgain.addEventListener('click', () => {
     audio.play();
     primaryGame();
 });
-
-function nextLevel() { 
-    score++;
-    scoreContent.innerHTML = `Score : ${score}`;
-    colorItems();
-
-    const audio = new Audio('audio/press.mp3');
-    audio.play();
-}
-
 
