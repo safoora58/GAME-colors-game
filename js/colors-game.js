@@ -22,7 +22,7 @@ function primaryGame() {
 function colorItems() {
     let randomColor = Math.floor(Math.random() * colors.length);
     let colorMain = colors[randomColor];
-    let amount = 60 + Math.floor(score / 5) * -7;
+    let amount = 60 + Math.floor(score / 5) * -9;
 
     items.forEach(item => {
         item.style.backgroundColor = colorMain;
