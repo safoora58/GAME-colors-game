@@ -1,0 +1,134 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  direction: ltr;
+  height: 100vh;
+  width: 100%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.container {
+  width: 95%;
+  height: 95%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.container-game {
+  width: 400px;
+  height: 400px;
+  background-color: rgb(242, 159, 144);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  gap: 2px;
+  padding: 5px;
+  border-radius: 5px;
+  
+}
+
+.item {
+  background-color: tomato;
+  border-radius: 9px;
+}
+
+
+.container-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 430px;
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  opacity: 0;
+visibility: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.modal {
+  width: 95%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+
+}
+
+#play {
+  width: 40%;
+  border: none;
+  padding: 14px 15px;
+  color: rgb(15, 0, 0);
+  background-color: rgb(237, 110, 13);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+img {
+  border-radius: 30%;
+  width: 60%;
+}
+
+.display {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 425px) {
+  .container {
+    width: 85%;
+    height: 65%;
+  }
+
+  .container-game {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 375px) {
+  .container {
+    width: 85%;
+    height: 55%;
+  }
+
+  .container-game {
+    width: 310px;
+    height: 310px;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    width: 95%;
+    height: 55%;
+  }
+
+  .container-game {
+    width: 300px;
+    height: 300px;
+  }
+}
